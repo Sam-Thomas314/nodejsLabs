@@ -28,6 +28,13 @@ router.get("/",(req,res)=>{
   // Copy the code here
   res.send(JSON.stringify({users}, null, 4))//This line is to be replaced with actual return value
 });
+router.get("/:email", (req, res) => {
+    const email = req.params.email;
+    let filtered_users = users.filter((user) => user.email === email);
+
+    res.send(filtered_users);
+    //snd filtered users array as the reponse to the client
+})
 
 // GET by specific ID request: Retrieve a single user with email ID
 router.put("/:email", (req, res) => {
